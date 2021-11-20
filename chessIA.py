@@ -15,7 +15,7 @@ def get_dataset(filename, size):
     # removal of null values
     data_df = data_df[data_df.apply(
         lambda row: pd.notnull(row['moves']), axis=1)]
-    total = data_df.shape
+    total, _ = data_df.shape
     ds_size = math.ceil(total*size)
     training = data_df['moves'].values[:ds_size]
     test = data_df['moves'].values[ds_size+1:]
@@ -34,11 +34,11 @@ def main():
     parced_test = []
 
     for game in training:
-        encoded = parse_movements(game)
+        encoded = parse_movements(game.split(' '))
         parced_training.append(encoded)
 
     for game in test:
-        encoded = parse_movements(game)
+        encoded = parse_movements(game.split(' '))
         parced_test.append(encoded)
 
 
