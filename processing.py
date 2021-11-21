@@ -14,8 +14,8 @@ def check_color(n_mov, pow):
 
 """
 Returns 1 for normal move
-        2 for castling (O-O or O-O-O)
-    or  3 for captures (x)
+        2 for captures (x)
+    or  3 for castling (O-O or O-O-O)
 Removes the corresponding symbol, including check (+) and mate (#) 
 Arguments:
 - n_mov: turn in which the move was played
@@ -26,29 +26,12 @@ def parse_special_move(n_mov, move, pow):
     char_remove = ''
     char_replace = ''
     value = 1
-    if "O-O-O" in move:
-        char_remove = "O-O-O"
-        if(check_color(n_mov, 0)==1):
-            char_replace = "Rc1"
-        else:
-            char_replace = "Rc8"
-        value = 2
-    elif "O-O" in move:
-        char_remove = "O-O"
-        if(check_color(n_mov, 0)==1):
-            char_replace = "Rg1"
-        else:
-            char_replace = "Rg8"
-        value = 2
-    move = move.replace(char_remove, char_replace)
-    char_remove = ''
-    char_replace = ''
     if "x" in move:
         source_col = move[move.find("x")-1]
         if(source_col.islower()):
             char_remove = source_col
         char_remove += "x"
-        value = 3
+        value = 2
         move = move.replace(char_remove, char_replace)
     if "=" in move:
         char_remove = "="
@@ -59,6 +42,21 @@ def parse_special_move(n_mov, move, pow):
         char_remove = "+"
     elif "#" in move:
         char_remove = "#"
+    move = move.replace(char_remove, char_replace)
+    if "O-O-O" in move:
+        char_remove = "O-O-O"
+        if(check_color(n_mov, 0)==1):
+            char_replace = "Rc1"
+        else:
+            char_replace = "Rc8"
+        value = 3
+    elif "O-O" in move:
+        char_remove = "O-O"
+        if(check_color(n_mov, 0)==1):
+            char_replace = "Rg1"
+        else:
+            char_replace = "Rg8"
+        value = 3
     move = move.replace(char_remove, char_replace)
     return move, value*10**pow
 
