@@ -50,6 +50,11 @@ def parse_special_move(n_mov, move, pow):
         char_remove += "x"
         value = 3
         move = move.replace(char_remove, char_replace)
+    if "=" in move:
+        char_remove = "="
+        piece_promo = move[move.find("=")+1]
+        char_remove += piece_promo
+        move = move.replace(char_remove, char_replace)
     if "+" in move:
         char_remove = "+"
     elif "#" in move:
@@ -98,7 +103,6 @@ Arguments:
 def parse_movements(game):
     movements = []
     for n_mov in range(0, len(game)):
-        print(n_mov)
         mov = game[n_mov]
         mov, code = parse_special_move(n_mov, mov, 4)
         code += parse_piece(mov[0], 5)
