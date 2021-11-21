@@ -20,7 +20,7 @@ class ProcessingTest(unittest.TestCase):
             parse_special_move(0, "Bc4", 0),
             ("Bc4", 1)
         )
-    
+
     def test_pawn_promotion_movement(self):
         self.assertEqual(
             parse_special_move(0, "f8=Q", 0),
@@ -99,8 +99,8 @@ class ProcessingTest(unittest.TestCase):
     def test_parse_movements(self):
         # Includes Rad1 movement with desambiguation notation
         self.assertEqual(parse_movements(
-            ["d4",    "d5",   "Nf3",   "Nxe5",  "Rd1",    "Rad1",  "f8=Q",  "f8=Q+", "exf8=Q+","Bb4+", "Kh5#"]),
-            [1110044, 2110045, 1210063, 2220055, 1410041, 2410041, 1110068, 2110068, 1120068, 2310024, 1610085 ])
+            ["d4",    "d5",   "Nf3",   "Nxe5",  "Rd1",    "Rad1",  "f8=Q",  "f8=Q+", "exf8=Q+", "Bb4+", "Kh5#"]),
+            [1110044, 2110045, 1210063, 2220055, 1410041, 2410041, 1110068, 2110068, 1120068, 2310024, 1610085])
 
 
 if __name__ == "__main__":
