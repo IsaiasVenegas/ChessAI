@@ -14,10 +14,12 @@ def check_color(n_mov, pow):
 
 def parse_special_move(n_mov, move, pow):
     """
-    Returns 1 for normal move
-            2 for captures (x)
-        or  3 for castling (O-O or O-O-O)
-    Removes the corresponding symbol, including check (+) and mate (#) 
+    Returns tuple of
+    movement without special characters (x, +, #, =, O-O, O-O-O)
+    with 
+        1 for normal move
+        2 for captures
+    or  3 for castling (O-O or O-O-O)
     Arguments:
     - n_mov: turn in which the move was played
     - move: current move
@@ -91,11 +93,11 @@ def parse_column(pos, pow):
 
 def parse_movements(game):
     """
-    Returns chess movements in a numerical notation
+    Returns a list of chess movements in a numerical notation
     following
-        color|piece |movement|targetCol|targetRow       
-        {1,2}|{1,,6}|{1,,4}  |{1,,8}   |{1,,8}
-    structure and values, removing one character after each checkup
+        color|piece |movement|sourceCol|sourceRow|targetCol|targetRow       
+        {1,2}|{1,,6}|{1,,3}  |0        |0        |{1,,8}   |{1,,8}
+    structure and values
     Arguments:
     - game: list of moves in string format
     """
