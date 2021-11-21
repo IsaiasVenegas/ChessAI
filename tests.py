@@ -54,25 +54,25 @@ class ProcessingTest(unittest.TestCase):
     def test_white_queenside_castling(self):
         self.assertEqual(
             parse_special_move(0, "O-O-O", 0),
-            ("Rc1", 3)
+            ("Kc1", 3)
         )
 
     def test_black_queenside_castling(self):
         self.assertEqual(
             parse_special_move(1, "O-O-O", 0),
-            ("Rc8", 3)
+            ("Kc8", 3)
         )
 
     def test_white_kingide_castling(self):
         self.assertEqual(
             parse_special_move(0, "O-O", 0),
-            ("Rg1", 3)
+            ("Kg1", 3)
         )
 
     def test_black_kingside_castling(self):
         self.assertEqual(
             parse_special_move(1, "O-O", 0),
-            ("Rg8", 3)
+            ("Kg8", 3)
         )
 
     def test_pawn_promotion_and_check_movement(self):

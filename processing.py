@@ -46,16 +46,16 @@ def parse_special_move(n_mov, move, pow):
     if "O-O-O" in move:
         char_remove = "O-O-O"
         if(check_color(n_mov, 0) == 1):
-            char_replace = "Rc1"
+            char_replace = "Kc1"
         else:
-            char_replace = "Rc8"
+            char_replace = "Kc8"
         value = 3
     elif "O-O" in move:
         char_remove = "O-O"
         if(check_color(n_mov, 0) == 1):
-            char_replace = "Rg1"
+            char_replace = "Kg1"
         else:
-            char_replace = "Rg8"
+            char_replace = "Kg8"
         value = 3
     move = move.replace(char_remove, char_replace)
     return move, value*10**pow
