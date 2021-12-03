@@ -3,7 +3,7 @@ def check_color(n_mov, pow):
     Checks which player has played
     Arguments:
     - n_mov: turn in which the move was played
-    - pow: position in final code representing which color has played
+    - pow: position value as a power of base 10
     """
     if n_mov % 2 == 0:
         # white piece movement
@@ -23,7 +23,7 @@ def parse_special_move(n_mov, move, pow):
     Arguments:
     - n_mov: turn in which the move was played
     - move: current move
-    - pow: position in final code representing the existing special move
+    - pow: position value as a power of base 10
     """
     char_remove = ''
     char_replace = ''
@@ -68,7 +68,7 @@ def parse_piece(piece, pow):
     Checks which piece has been moved
     Arguments:
     - piece: current piece represented by a letter (except for the pawn)
-    - pow: position in final code representing the moved piece
+    - pow: position value as a power of base 10
     """
     values = {"N": 2, "B": 3, "R": 4, "Q": 5, "K": 6}
     if piece.islower():
@@ -84,7 +84,7 @@ def parse_column(pos, pow):
     Checks the column
     Arguments:
     - pos: current column represented by a letter
-    - pow: position in final code representing the queried column
+    - pow: position value as a power of base 10
     """
     values = {"a": 1, "b": 2, "c": 3, "d": 4, "e": 5, "f": 6, "g": 7, "h": 8}
     value = values[pos]
